@@ -1,6 +1,8 @@
 
 //Login
 
+import { Children } from "react";
+
 export type LoginFormInputs = {
     name: string;
     password: string;
@@ -22,8 +24,31 @@ export const Signin: NavLink = {
     activeClassName: 'active',
 };
 
+//MenuPc
 
+export const home: NavLink = {
+    to: "/",
+    children: "home",
+    activeClassName: 'active',
+}
 
+export const search: NavLink = {
+    to: "/search",
+    children: "search",
+    activeClassName: 'active',
+}
+
+export const favorites: NavLink = {
+    to: "/favorites",
+    children: "favorites",
+    activeClassName: 'active',
+}
+
+export const library: NavLink = {
+    to: "/library",
+    children: "library",
+    activeClassName: 'active',
+}
 //Register
 
 export type RegisterFormInputs = {

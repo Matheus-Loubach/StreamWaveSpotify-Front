@@ -5,6 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { SiApplemusic } from "react-icons/si";
 import { NavLink } from 'react-router-dom';
 import { Context } from '../../Context/AuthContext';
+import { home, search, library, favorites } from '../../pages/Types_Interface/types'
 
 const Menu = () => {
 
@@ -17,7 +18,7 @@ const Menu = () => {
         <div id='RemoveForMobile'>
             <header className="container_profile">
                 <div id='title'>
-                <h1>Stream Waver</h1>
+                    <h1>Stream Waver</h1>
                 </div>
                 <div className='profile_user'>
                     <p>@{profile?.name}</p>
@@ -31,20 +32,20 @@ const Menu = () => {
                             <ul>
                                 <div>
                                     <AiTwotoneHome style={style} />
-                                    <NavLink activeclassName="active" to='/'><li>início</li></NavLink>
+                                    <NavLink {...home}><li>início</li></NavLink>
                                 </div>
                                 <div>
                                     <AiOutlineSearch style={style} />
-                                    <NavLink activeclassName="active" to='/search'><li>Buscar</li></NavLink>
+                                    <NavLink  {...search}><li>Buscar</li></NavLink>
                                 </div>
                                 <div>
                                     <SiApplemusic style={style} />
-                                    <NavLink activeclassName="active" to='/library'><li>Sua Biblioteca</li></NavLink>
+                                    <NavLink  {...library}><li>Sua Biblioteca</li></NavLink>
                                 </div>
                             </ul>
                             <ul>
                                 <div>
-                                    <NavLink activeclassName="active" to='/favorites'><li>Músicas Favoritas</li></NavLink>
+                                    <NavLink  {...favorites}><li>Músicas Favoritas</li></NavLink>
                                 </div>
                             </ul>
                             <hr />
