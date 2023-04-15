@@ -45,7 +45,7 @@ const Menu = () => {
                             </ul>
                             <ul>
                                 <div>
-                                    <NavLink  {...favorites}><li>Músicas Favoritas</li></NavLink>
+                                    <NavLink to='/favorites'><li>Músicas Favoritas</li></NavLink>
                                 </div>
                             </ul>
                             <hr />

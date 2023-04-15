@@ -33,7 +33,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/library' element={<Library />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/*' element={isAuthenticated ? <Home /> : <Login />} />
+          <Route path='*' element={isAuthenticated ? <Home /> : <Login />} />
 
         </Routes>
       </div>
