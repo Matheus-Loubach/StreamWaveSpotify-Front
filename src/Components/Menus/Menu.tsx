@@ -32,15 +32,15 @@ const Menu = () => {
                             <ul>
                                 <div>
                                     <AiTwotoneHome style={style} />
-                                    <NavLink {...home}><li>início</li></NavLink>
+                                    <NavLink to='/'><li>início</li></NavLink>
                                 </div>
                                 <div>
                                     <AiOutlineSearch style={style} />
-                                    <NavLink  {...search}><li>Buscar</li></NavLink>
+                                    <NavLink to='/search'><li>Buscar</li></NavLink>
                                 </div>
                                 <div>
                                     <SiApplemusic style={style} />
-                                    <NavLink  {...library}><li>Sua Biblioteca</li></NavLink>
+                                    <NavLink to='/library'><li>Sua Biblioteca</li></NavLink>
                                 </div>
                             </ul>
                             <ul>
