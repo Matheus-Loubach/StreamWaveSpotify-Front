@@ -122,6 +122,8 @@ const AuthContext = ({ children }: AuthContextProps) => {
 
       if (response) {
         setMessagem(response);
+        console.log('Registro', response);
+        
       }
 
     } catch (error: any) {
@@ -289,7 +291,7 @@ const AuthContext = ({ children }: AuthContextProps) => {
     setMusicSearch("");
   }
 
-
+  console.log(messagem)
 
   return (
     <Context.Provider

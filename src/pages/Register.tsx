@@ -59,6 +59,10 @@ const Register = () => {
             <span>{errors.passwordconf?.message}</span>
           </label>
           {messagem.message || messagem ? <p>{messagem.message}</p> : <p>{messagem}</p>}
+          {messagem.error || messagem ? <p>{messagem.error}</p> : <p>{messagem}</p>}
+            
+
+          
           <button>Create</button>
         </form>
       </section>
