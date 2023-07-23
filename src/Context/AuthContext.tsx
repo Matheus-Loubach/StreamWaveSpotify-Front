@@ -56,7 +56,7 @@ const AuthContext = ({ children }: AuthContextProps) => {
   // Estado para armazenar a entrada de pesquisa do usuário
   const [searchMusic, setMusicSearch] = useState<string>('');
   // Estado para armazenar mensagens de erro/sucesso
-  const [messagem, setMessagem] = useState<string[]>([]);
+  const [messagem, setMessagem] = useState<string>('');
   // Estado para armazenar informações do perfil do usuário
   const [profile, Setprofile] = useState<Record<string, unknown>>();
 
@@ -89,11 +89,11 @@ const AuthContext = ({ children }: AuthContextProps) => {
       }
       setMessagem(response);
     } catch (error) {
-      setMessagem(["Ocorreu um erro ao fazer login!"]);
+      setMessagem("Ocorreu um erro ao fazer login!");
     }
   };
 
-  //Verifica se o token do usuário é valido e se for retorna as info
+  //Verifica se o token do usuário é valido e se for retorna as info do perfil
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -119,9 +119,13 @@ const AuthContext = ({ children }: AuthContextProps) => {
   const handleRegister = async (data: RegisterData) => {
     try {
       const response = await register(data);
-      setMessagem(response);
+
+      if (response) {
+        setMessagem(response);
+      }
+
     } catch (error: any) {
-      console.log(`Ocorreu um erro ao registrar! ${error.message}`);
+      setMessagem(`Ocorreu um erro ao registrar! ${error.message}`);
     }
   };
 
