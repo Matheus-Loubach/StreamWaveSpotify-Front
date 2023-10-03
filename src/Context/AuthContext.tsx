@@ -60,36 +60,43 @@ const AuthContext = ({ children }: AuthContextProps) => {
   // Estado para armazenar informações do perfil do usuário
   const [profile, Setprofile] = useState<Record<string, unknown>>();
 
+  //Verificar ser o login está sendo feito e o registro para mostrar ao user.
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
 
   // Lida com o login do usuário
   const handleLogin = async (data: { name: string, password: string }) => {
-
-    try {
-      const responseData = await fetch(api + '/login', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${tokenUser}`,
-        },
-        body: JSON.stringify(data),
-      });
-      const response = await responseData.json();
-      if (response.token) {
-        localStorage.setItem("auth", "true");
-        localStorage.setItem("token", response.token);
-        setIsAuthenticated(true);
-        setTokenUser(response.token);
-        navigate("/");
-      } else {
-        setIsAuthenticated(false);
-        localStorage.removeItem("auth");
-        localStorage.removeItem("token");
-        setTokenUser("");
-        navigate("/login");
+    if (!isSubmitting) {
+      setIsSubmitting(true)
+      try {
+        const responseData = await fetch(api + '/login', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${tokenUser}`,
+          },
+          body: JSON.stringify(data),
+        });
+        const response = await responseData.json();
+        if (response.token) {
+          localStorage.setItem("auth", "true");
+          localStorage.setItem("token", response.token);
+          setIsAuthenticated(true);
+          setTokenUser(response.token);
+          navigate("/");
+          setIsSubmitting(false)
+        } else {
+          setIsAuthenticated(false);
+          localStorage.removeItem("auth");
+          localStorage.removeItem("token");
+          setTokenUser("");
+          navigate("/login");
+        }
+        setMessagem(response);
+      } catch (error) {
+        setMessagem("Ocorreu um erro ao fazer login!");
       }
-      setMessagem(response);
-    } catch (error) {
-      setMessagem("Ocorreu um erro ao fazer login!");
     }
   };
 
@@ -104,7 +111,6 @@ const AuthContext = ({ children }: AuthContextProps) => {
           },
         });
         const data = await response.json();
-        console.log('algo', data);
         localStorage.setItem('idUser', data._id);
         setIdUser(data._id);
         Setprofile(data);
@@ -117,18 +123,21 @@ const AuthContext = ({ children }: AuthContextProps) => {
 
   // Lida com o registro do usuário
   const handleRegister = async (data: RegisterData) => {
+    if (!isSubmitting) {
+      setIsSubmitting(true)
     try {
       const response = await register(data);
 
       if (response) {
         setMessagem(response);
-        console.log('Registro', response);
-        
+        setIsSubmitting(false);
+        navigate("/login");
       }
 
     } catch (error: any) {
       setMessagem(`Ocorreu um erro ao registrar! ${error.message}`);
     }
+  }
   };
 
 
@@ -316,6 +325,7 @@ const AuthContext = ({ children }: AuthContextProps) => {
         setResultBest,
         resultBest,
         tracks,
+        isSubmitting
       }}
     >
       {children}

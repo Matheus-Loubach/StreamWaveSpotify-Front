@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -15,14 +15,19 @@ const schema = yup.object({
 
 const Login = () => {
 
-  const { handleLogin, messagem } = useContext(Context);
+  const { handleLogin,setIsSubmitting, isSubmitting, messagem } = useContext(Context);
 
+  
   const {
     register,handleSubmit,formState: { errors },} = useForm<LoginFormInputs>({resolver: yupResolver(schema),});
-
+    
   const onSubmit = (data: LoginFormInputs) => {
     handleLogin(data);
   };
+  
+  useEffect( () =>{
+  
+  },[errors])
 
   return (
     <div className='container_Register'>
@@ -45,7 +50,9 @@ const Login = () => {
             <input type='password' placeholder='Senha' {...register('password')} />
             <span>{errors.password?.message}</span>
           </label>
-          <button type='submit'>Login</button>
+          <button type='submit' disabled={isSubmitting} >
+          {isSubmitting ? 'Conectando...' : 'Login'}
+          </button>
           {messagem?.msg && <p>{messagem.msg}</p>}
         </form>
       </section>

@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
 const Register = () => {
 
-  const { handleRegister, messagem } = useContext(Context);
+  const { handleRegister, isSubmitting, messagem } = useContext(Context);
 
   const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormInputs>({
     resolver: yupResolver(schema)
@@ -60,10 +60,10 @@ const Register = () => {
           </label>
           {messagem.message || messagem ? <p>{messagem.message}</p> : <p>{messagem}</p>}
           {messagem.error || messagem ? <p>{messagem.error}</p> : <p>{messagem}</p>}
-            
 
-          
-          <button>Create</button>
+
+
+          <button>{isSubmitting ? 'Cadastrando..' : 'Cadastrar'}</button>
         </form>
       </section>
     </div>

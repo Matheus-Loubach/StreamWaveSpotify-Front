@@ -31,9 +31,9 @@ function App() {
           <Route path='/search' element={isAuthenticated ? <SearchMusic /> : <Login />} />
           <Route path='/favorites' element={isAuthenticated ? <Favorites /> : <Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/library' element={<Library />} />
+          <Route path='/library' element={isAuthenticated ? <Library /> : <Login />} />
           <Route path='/login' element={<Login />} />
-          <Route path='*' element={isAuthenticated ? <Home /> : <Login />} />
+          <Route path='/*' element={isAuthenticated ? <Home /> : <Login />} />
 
         </Routes>
       </div>
