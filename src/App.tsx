@@ -37,8 +37,8 @@ function App() {
 
         </Routes>
       </div>
-      {isAuthenticated ? <Audio /> : <span></span>}
-      {isAuthenticated ? <MenuMobile /> : <span></span>}
+      {isAuthenticated ? <Audio /> : []}
+      {isAuthenticated ? <MenuMobile /> : []}
     </div>
   );
 }

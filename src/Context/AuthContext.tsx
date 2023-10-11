@@ -100,6 +100,33 @@ const AuthContext = ({ children }: AuthContextProps) => {
     }
   };
 
+  // Lida com o registro do usuário
+  const handleRegister = async (data: RegisterData) => {
+    if (!isSubmitting) {
+      setIsSubmitting(true)
+      try {
+        const responseData = await fetch(api + "/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const response = await responseData.json();
+
+        if (response) {
+          setMessagem(response.message);
+          setIsSubmitting(false);
+          navigate("/login");
+        }
+
+      } catch (error: any) {
+        setMessagem(`Ocorreu um erro ao registrar! ${error.message}`);
+      }
+    }
+  };
+
   //Verifica se o token do usuário é valido e se for retorna as info do perfil
   useEffect(() => {
     const fetchProfile = async () => {
@@ -120,25 +147,6 @@ const AuthContext = ({ children }: AuthContextProps) => {
     };
     fetchProfile();
   }, [tokenUser]);
-
-  // Lida com o registro do usuário
-  const handleRegister = async (data: RegisterData) => {
-    if (!isSubmitting) {
-      setIsSubmitting(true)
-    try {
-      const response = await register(data);
-
-      if (response) {
-        setMessagem(response);
-        setIsSubmitting(false);
-        navigate("/login");
-      }
-
-    } catch (error: any) {
-      setMessagem(`Ocorreu um erro ao registrar! ${error.message}`);
-    }
-  }
-  };
 
 
   // Verificar se o usuário já está autenticado
