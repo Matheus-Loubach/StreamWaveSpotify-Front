@@ -1,18 +1,23 @@
-# Projeto de Streaming com a API do Spotify
-- Este é a parte front-end do projeto que utiliza a API do Spotify para criar uma plataforma de streaming de música.
+# 🎵 Projeto de Streaming com a API do Deezer
 
-## Funcionalidades
-- Tocar as músicas selecionadas pelo usuário
-- Buscar e exibir músicas do Spotify
-- Permitir que o usúario adicione músicas aos favoritos
-- Exibir as tocadas recentemente
+Este é o front-end de uma plataforma de streaming de música que utiliza a API do Deezer para fornecer uma experiência interativa e dinâmica aos usuários.
 
-## Tecnologias utilizadas:
+## 🚀 Funcionalidades
 
-- React
-- TypeScript
-- Yup
-- CSS
-- UseForms
+- 🎶 **Reprodução de músicas** selecionadas pelo usuário.
+- 🔎 **Busca de músicas** na API do Deezer e exibição dos resultados.
+- ⭐ **Gerenciamento de favoritos**: adicionar e remover músicas da lista de favoritos.
+- ⏪ **Histórico de reprodução**: exibir as músicas reproduzidas recentemente.
 
-- Back-end: https://github.com/Matheus-Loubach/StreamWaveSpotify-Back
+## 🛠 Tecnologias utilizadas
+
+- **React**
+- **TypeScript**
+- **Yup**
+- **CSS**
+- **React Hook Form**
+
+## 🔗 Back-end
+
+O back-end deste projeto pode ser encontrado em:
+👉 [Repositório Back-end](https://github.com/Matheus-Loubach/StreamWaveSpotify-Back)
