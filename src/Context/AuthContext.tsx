@@ -40,7 +40,7 @@ const AuthContext = ({ children }: AuthContextProps) => {
       }
     };
     fetchProfile();
-  }, [tokenUser]);
+  }, []);
 
   useEffect(() => {
     if (currentTrack) {
