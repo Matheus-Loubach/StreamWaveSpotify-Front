@@ -1,4 +1,5 @@
-export const api = 'https://cadastro-steam-wave.vercel.app/Api'
+export const dev = 'https://cadastro-steam-wave.vercel.app/api'
+// export const dev = 'http://localhost:3000/api'
 
 type RegisterData = {
     name: string,
@@ -7,7 +8,6 @@ type RegisterData = {
     passwordconf: string
   }
 
-//Configurações httpFavoriteMusic
 export const RequestConfig = (method: any, data: RegisterData) => {
     if (method !== "POST") {
       throw new Error(`Unsupported method: ${method}`);
